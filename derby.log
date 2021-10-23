@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Aug 28 00:21:46 BOT 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-017b-8afd-fbe5-00000a064ad0 
+on database directory C:\Users\USER\OneDrive\Documentos\NetBeansProjects\Carmen\carmen with class loader sun.misc.Launcher$AppClassLoader@2c7b84de 
+Loaded from file:/C:/Program%20Files/NetBeans-12.2/netbeans/bin/Libraries%20others/db-derby-10.14.2.0-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_271-b09
+user.dir=C:\Users\USER\OneDrive\Documentos\NetBeansProjects\Carmen
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Recibo" language="groovy" pageWidth="451" pageHeight="421" orientation="Landscape" columnWidth="411" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d495ff93-2db5-4049-b1a1-21e93fb3ad2b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="detalle" uuid="10c097c8-f2c4-4df7-afae-45cd6b7751c7">
+		<parameter name="id_recibo" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select d.*, (d.cantidad*(SELECT p.precio_unitario From producto p WHERE p.id = d.id_producto)) AS parcial, pr.cod, pr.tipo,pr.marca, pr.precio_unitario
+FROM detalle d, producto pr
+WHERE 	pr.id = d.id_producto and
+	id_recibo = $P{id_recibo}]]>
+		</queryString>
+		<field name="id_recibo" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="id_producto" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="cantidad" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="parcial" class="java.lang.Double"/>
+		<field name="cod" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="tipo" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="marca" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="precio_unitario" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\USER\\OneDrive\\Documentos\\NetBeansProjects\\Ingrid\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="literal" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT a.*,s.nombre as nombreServicio, s.id as idServicio, s.precio as precioServico, c.*
+FROM anticipo a, servicio s, cliente c
+WHERE
+	c.id = s.id_cliente AND
+	a.id_servicio = s.id AND
+	s.id = $P{id}]]>
+	</queryString>
+	<field name="monto" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_pago" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_servicio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombreServicio" class="java.lang.String"/>
+	<field name="idServicio" class="java.lang.Integer"/>
+	<field name="precioServico" class="java.lang.Double"/>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="empresa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tipo_regimen" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="password_si" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="usuario_si" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="2" width="381" height="64" backcolor="#FFFFFF" uuid="78388ff8-5992-4ad8-9b35-d0d7e1aa293d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="16" y="40" width="88" height="20" uuid="a1d2515d-723b-4ed2-a9d5-b287ab24d636"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="16" y="20" width="88" height="20" backcolor="#000000" uuid="73c61abf-dd2a-467e-ba7d-c27c25a7a31f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="381" height="20" uuid="7c0c542c-ed1d-4975-a481-d78826bad21e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="0" width="100" height="20" uuid="13bcc51b-956c-4e9b-92bf-e5ed0b284378"/>
+				<text><![CDATA["LEON & MUÑOZ"]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="268" y="14" width="113" height="20" uuid="0078d242-4a97-4efd-9981-d84a2ce33da2"/>
+				<textFieldExpression><![CDATA["No.0000"+$F{idServicio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="20" width="29" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="821c80ad-a24d-420c-b9bc-11b292faf6d3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DÍA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="45" y="20" width="1" height="40" uuid="c7307558-9717-401e-873c-7d0b4518fde6"/>
+			</line>
+			<staticText>
+				<reportElement x="46" y="20" width="29" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="c91cb6c1-18b4-4ca7-bfc9-def423325f4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[MES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="20" width="29" height="20" forecolor="#FFFFFF" backcolor="#000000" uuid="c0f51bd9-5701-435a-992c-2a4c8d3b2d0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[AÑO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="75" y="20" width="1" height="40" uuid="105f711b-5842-4f86-b881-1ce838606ed6"/>
+			</line>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="15" y="40" width="30" height="20" uuid="44c5f33b-c05c-4616-9a41-6b00395e2e33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM">
+				<reportElement x="45" y="40" width="30" height="20" uuid="bb96adbc-a968-4d50-85cd-43b2e62f7276"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MM").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy">
+				<reportElement x="76" y="40" width="30" height="20" uuid="953eeeb0-eb50-4a8b-a11f-ee37ef05c076"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("yyyy").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="34" width="20" height="20" uuid="f29d0a2b-e5d9-44b1-813c-dcf27e51d5d0"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Bs.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="281" y="34" width="89" height="20" uuid="8a6ec309-bc3f-4fb7-a75a-6e10c0f710c5"/>
+			</rectangle>
+			<textField>
+				<reportElement x="284" y="40" width="89" height="20" uuid="0ea855c5-997b-4151-b480-aedf37a99bee"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="71" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="295" height="20" uuid="40939465-81ff-4830-abd3-65d06d6c6ec6"/>
+				<textFieldExpression><![CDATA["Recibí del Señor (a):  " + $F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="24" width="295" height="20" uuid="cff9e63f-5469-4550-a607-e266667f6b68"/>
+				<textFieldExpression><![CDATA["La suma de: "+$P{literal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="44" width="224" height="20" uuid="416d16bf-021f-4e83-97d2-c0c2609f8fac"/>
+				<textFieldExpression><![CDATA["Servicio: " + $F{nombreServicio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="85">
+			<line>
+				<reportElement x="261" y="35" width="100" height="1" uuid="1b5b27f5-ff9f-4408-a490-b8c47384714f"/>
+			</line>
+			<staticText>
+				<reportElement x="261" y="36" width="100" height="20" uuid="7b4b407e-92c6-437d-b516-38d8870c8925"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Entregué conforme]]></text>
+			</staticText>
+			<line>
+				<reportElement x="16" y="36" width="100" height="1" uuid="cd63d2a3-02a6-4bdf-a55a-9976364f0527"/>
+			</line>
+			<staticText>
+				<reportElement x="16" y="36" width="100" height="20" uuid="1b0d3cf1-1ac2-4db7-86f7-f7ebce74947c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Recibí conforme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="0" width="37" height="20" uuid="28a94eec-edf5-4c7e-9da6-7737f18829bb"/>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="261" y="0" width="100" height="20" uuid="746b8eea-171e-4cae-be15-810274ab7469"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
